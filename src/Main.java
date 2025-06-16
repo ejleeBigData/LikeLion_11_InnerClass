@@ -1,29 +1,13 @@
-public class Main {
-    String outerMessage = "Hello from Outer";
-
-    private class Inner {
-        void showMessage() {
-            System.out.println(outerMessage);
-        }
-    }
-
-    public static void main(String[] args) {
-        Main main = new Main();
-
-        Main.Inner inner = main.new Inner();
-        inner.showMessage();
-    }
-}
-
-/*
-//오류 코드
 class Outer {
-    String outerMessage = "Hello from Outer";
-
-    private class Inner {
-        void showMessage() {
-            System.out.println(outerMessage);
+    private class HiddenInner {
+        void secret() {
+            System.out.println("private!");
         }
+    }
+
+    public void reveal() {
+        HiddenInner hi = new HiddenInner();
+        hi.secret();
     }
 }
 
@@ -31,9 +15,5 @@ public class Main {
     public static void main(String[] args) {
         Outer outer = new Outer();
 
-        Outer.Inner inner = outer.new Inner();
-
-        inner.showMessage();
     }
 }
-*/
