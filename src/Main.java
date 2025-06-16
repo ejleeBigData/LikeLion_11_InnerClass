@@ -1,27 +1,39 @@
-class Car {
-    String brand;
-    Engine engine;
+public class Main {
+    String outerMessage = "Hello from Outer";
 
-    public Car(String brand) {
-        this.brand = brand;
-        this.engine = new Engine();
-    }
-
-    class Engine {
-        public void start() {
-            System.out.println("The engin of " + brand + " 부릉부릉 ");
+    private class Inner {
+        void showMessage() {
+            System.out.println(outerMessage);
         }
     }
 
-    public void startEngine() {
-        engine.start();
+    public static void main(String[] args) {
+        Main main = new Main();
+
+        Main.Inner inner = main.new Inner();
+        inner.showMessage();
+    }
+}
+
+/*
+//오류 코드
+class Outer {
+    String outerMessage = "Hello from Outer";
+
+    private class Inner {
+        void showMessage() {
+            System.out.println(outerMessage);
+        }
     }
 }
 
 public class Main {
     public static void main(String[] args) {
-        Car car = new Car("기아");
+        Outer outer = new Outer();
 
-        car.startEngine();
+        Outer.Inner inner = outer.new Inner();
+
+        inner.showMessage();
     }
 }
+*/
